@@ -1,3 +1,5 @@
+%this code will simulate waves reflecting off of a square with different current.  
+
 winstyle = 'docked';
 % winstyle = 'normal';
 
@@ -34,9 +36,9 @@ ny{1} = 0.75*nx{1};
 
 
 Reg.n = 1;
-
+%%%%structure matrices
 mu{1} = ones(nx{1},ny{1})*c_mu_0;
-
+%%%%epsilon matrices
 epi{1} = ones(nx{1},ny{1})*c_eps_0;
 epi{1}(125:150,55:95)= c_eps_0*11.3;
 
@@ -48,7 +50,7 @@ dt = 0.25*dx/c_c;
 nSteps = round(tSim/dt*2);
 yMax = ny{1}*dx;
 nsteps_lamda = lambda/dx
-
+%%%%plotting criteria
 movie = 1;
 Plot.off = 0;
 Plot.pl = 0;
@@ -59,7 +61,7 @@ Plot.MaxH = Plot.MaxEz/c_eta_0;
 Plot.pv = [0 0 90];
 Plot.reglim = [0 xMax{1} 0 yMax];
 
-
+%%%%bound conditions
 bc{1}.NumS = 1;
 bc{1}.s(1).xpos = nx{1}/(4) + 1;
 bc{1}.s(1).type = 'pp';
@@ -77,7 +79,7 @@ sty = 1.5*lambda;
 bc{1}.s(1).paras = {mag,phi,omega,betap,t0,st,s,y0,sty,'s'};
 
 Plot.y0 = round(y0/dx);
-
+%%%%bound type
 bc{1}.xm.type = 'a';
 bc{1}.xp.type = 'a';
 bc{1}.ym.type = 'a';
